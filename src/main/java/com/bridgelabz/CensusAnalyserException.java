@@ -5,8 +5,9 @@ package com.bridgelabz;
  * and creating an enum which holds two types of custom exceptions
  */
 public class CensusAnalyserException extends Exception{
+
     enum ExceptionType {
-        CENSUS_FILE_PROBLEM,UNABLE_TO_PARSE
+        CENSUS_FILE_PROBLEM,UNABLE_TO_PARSE,CENSUS_FILE_TYPE_PROBLEM
     }
 
     ExceptionType type;

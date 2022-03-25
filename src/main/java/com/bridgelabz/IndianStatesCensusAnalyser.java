@@ -23,6 +23,11 @@ public class IndianStatesCensusAnalyser {
      * @throws CensusAnalyserException
      */
     public static int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
+        if(csvFilePath != null && !csvFilePath.endsWith(".csv")) {
+            throw new CensusAnalyserException("Incorrect File Type",
+                    CensusAnalyserException.ExceptionType.CENSUS_FILE_TYPE_PROBLEM);
+        }
+
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             CsvToBeanBuilder<IndianStateCensusCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
             csvToBeanBuilder.withType(IndianStateCensusCSV.class);
